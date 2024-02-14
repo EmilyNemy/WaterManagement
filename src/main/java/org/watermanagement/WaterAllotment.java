@@ -52,8 +52,10 @@ public class WaterAllotment {
   public double getTotalWaterConsumed(int apartmentType, int numberOfGuests) {
     if (apartmentType == 2) {
       return 900 + (numberOfGuests * 10 * 30);
-    } else {
+    } else if(apartmentType == 3) {
       return 1500 + (numberOfGuests * 10 * 30);
+    }else{
+      throw new IllegalArgumentException("There is something strange in the input");
     }
   }
 }

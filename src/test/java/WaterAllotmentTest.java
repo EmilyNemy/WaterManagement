@@ -57,4 +57,13 @@ public class WaterAllotmentTest {
     Assertions.assertEquals(4500, actual, 0.001 );
   }
 
+  @Test
+  public void testTotalWaterConsumedForNoBedRoom(){
+    WaterAllotment testInstance = new WaterAllotment();
+    Throwable exception = assertThrows(IllegalArgumentException.class,
+        () -> testInstance.getTotalWaterConsumed(4, 10));
+    Assertions.assertEquals("There is something strange in the input", exception.getMessage());
+
+  }
+
 }
