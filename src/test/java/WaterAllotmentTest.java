@@ -2,6 +2,8 @@ import org.watermanagement.WaterAllotment;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class WaterAllotmentTest {
   @Test
   public void testGetAmountForTwoBedRoom(){
@@ -17,10 +19,11 @@ public class WaterAllotmentTest {
     Assertions.assertEquals(1950, actual, 0.001);
   }
 
-  //@Test
-  //public void testThrowExceptionWhenApartmentTypeIsInvalid(){
-  //  WaterAllotment testInstance = new WaterAllotment();
-  //  double actual = testInstance.calculateStandardCost(4, 2, 3);
-  //  Assertions.assertEquals(1950, actual, 0.001);
-  //}
+  @Test
+  public void testThrowExceptionWhenApartmentTypeIsInvalid(){
+    WaterAllotment testInstance = new WaterAllotment();
+    Throwable exception = assertThrows(IllegalArgumentException.class,
+        () -> testInstance.calculateStandardCost(4, 2, 3));
+    Assertions.assertEquals("There is something strange in the input", exception.getMessage());
+  }
 }
