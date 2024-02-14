@@ -45,4 +45,16 @@ public class WaterAllotmentTest {
     Assertions.assertEquals(6500, actual, 0.001 );
   }
 
+  @Test
+  public void testTotalWaterConsumedFor2BedRoom(){
+    double actual = new WaterAllotment().getTotalWaterConsumed(2, 10);
+    Assertions.assertEquals(3900, actual, 0.001 );
+  }
+
+  @Test
+  public void testTotalWaterConsumedFor3BedRoom(){
+    double actual = new WaterAllotment().getTotalWaterConsumed(3, 10);
+    Assertions.assertEquals(4500, actual, 0.001 );
+  }
+
 }
