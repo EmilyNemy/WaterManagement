@@ -8,4 +8,10 @@ public class ThreeBedroomTest {
     int actual = new ThreeBedRoom().getWaterConsumed(2);
     Assertions.assertEquals(2100, actual );
   }
+
+  @Test
+  public void testGetWaterConsumedForThreeBedRoomWithNoGuests(){
+    int actual = new ThreeBedRoom().getWaterConsumed(0);
+    Assertions.assertEquals(1500, actual );
+  }
 }
