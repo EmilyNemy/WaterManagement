@@ -21,4 +21,26 @@ public class WaterAllotment {
 
     return amountForCorp + amountForBore;
   }
+
+  public double calculateTotalCost(int apartmentType, int corporationRatio, int borewellRatio, int numberOfGuests) {
+    double standardCost = calculateStandardCost(apartmentType, corporationRatio, borewellRatio);
+    double guestLitres = numberOfGuests * 10 * 30;
+    double costForGuests = tankerWaterCost(guestLitres);
+    return standardCost + costForGuests;
+  }
+
+  private double tankerWaterCost(double guestLitres) {
+    if (guestLitres > 0 && guestLitres <= 500){
+      return guestLitres * 2;
+    } else if (guestLitres > 500 && guestLitres <= 1500) {
+      double secondSlab = guestLitres - 500;
+      return (500 * 2) +(secondSlab * 3);
+    } else if (guestLitres > 1500 && guestLitres <= 3000) {
+      double thirdSlab = guestLitres - 1500;
+      return (500 * 2) + (1000 * 3) + (thirdSlab * 5);
+    }else {
+      double fourthSlab = guestLitres - 3000;
+      return (500 * 2) + (1000 * 3) +(1500 * 5) + (fourthSlab * 8);
+    }
+  }
 }

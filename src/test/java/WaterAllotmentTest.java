@@ -26,4 +26,12 @@ public class WaterAllotmentTest {
         () -> testInstance.calculateStandardCost(4, 2, 3));
     Assertions.assertEquals("There is something strange in the input", exception.getMessage());
   }
+
+  @Test
+  public void testCalculateTotalCost(){
+    double actual = new WaterAllotment().calculateTotalCost(3, 1, 5, 10);
+    Assertions.assertEquals(13625, actual, 0.001 );
+  }
+
+
 }
