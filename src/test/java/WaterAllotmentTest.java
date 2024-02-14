@@ -33,5 +33,10 @@ public class WaterAllotmentTest {
     Assertions.assertEquals(13625, actual, 0.001 );
   }
 
+  @Test
+  public void testCalculateTotalCostWithNoGuests(){
+    double actual = new WaterAllotment().calculateTotalCost(2, 1, 2, 0);
+    Assertions.assertEquals(1200, actual, 0.001 );
+  }
 
 }

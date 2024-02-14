@@ -23,6 +23,9 @@ public class WaterAllotment {
   }
 
   public double calculateTotalCost(int apartmentType, int corporationRatio, int borewellRatio, int numberOfGuests) {
+    if(numberOfGuests == 0){
+      return calculateStandardCost(apartmentType, corporationRatio, borewellRatio);
+    }
     double standardCost = calculateStandardCost(apartmentType, corporationRatio, borewellRatio);
     double guestLitres = numberOfGuests * 10 * 30;
     double costForGuests = tankerWaterCost(guestLitres);
