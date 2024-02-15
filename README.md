@@ -5,7 +5,7 @@ The parameters are: apartment type, number of residents, ratio allocated for Cor
 
 ## Requirements
 - Java 8
-- Gradle
+- Install Gradle
 
 ## Testing
 
