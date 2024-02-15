@@ -42,15 +42,22 @@ public class WaterAllotment {
   public double tankerWaterCost(double guestLitres) {
     if (guestLitres > 0 && guestLitres <= 500) {
       return guestLitres * 2;
-    } else if (guestLitres > 500 && guestLitres <= 1500) {
-      double secondSlab = guestLitres - 500;
-      return (500 * 2) + (secondSlab * 3);
-    } else if (guestLitres > 1500 && guestLitres <= 3000) {
-      double thirdSlab = guestLitres - 1500;
-      return (500 * 2) + (1000 * 3) + (thirdSlab * 5);
     } else {
-      double fourthSlab = guestLitres - 3000;
-      return (500 * 2) + (1000 * 3) + (1500 * 5) + (fourthSlab * 8);
+      int amountForFirstSlab = 500 * 2;
+      if (guestLitres > 500 && guestLitres <= 1500) {
+        double secondSlab = guestLitres - 500;
+        return amountForFirstSlab + (secondSlab * 3);
+      } else {
+        int amountForSecondSlab = 1000 * 3;
+        if (guestLitres > 1500 && guestLitres <= 3000) {
+          double thirdSlab = guestLitres - 1500;
+          return amountForFirstSlab + amountForSecondSlab + (thirdSlab * 5);
+        } else {
+          double fourthSlab = guestLitres - 3000;
+          int amountForThirdSlab = 1500 * 5;
+          return amountForFirstSlab + amountForSecondSlab + amountForThirdSlab + (fourthSlab * 8);
+        }
+      }
     }
   }
 
