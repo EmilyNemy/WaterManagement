@@ -14,9 +14,11 @@ or `./gradlew test`
 
 ## Running the application
 To run the application, run the following command:
-`gradle run`
+`gradle run -args="sample_input/input4.txt"`
 
-Change the file location in the `Main.java` file to the location of the input file.
-e.g `String filePath = "sample_input/input4.txt";`
+Change the file location accordingly or change the content of the file accordingly.
 
-Som improvements to add are remove the magic numbers in the `WaterAllotment.java`
+Some improvements to 
+- add are remove the magic numbers in the `WaterAllotment.java`
+- Make the WaterAllotment class a class
+ 
