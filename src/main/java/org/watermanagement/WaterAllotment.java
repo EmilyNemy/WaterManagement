@@ -1,6 +1,10 @@
 package org.watermanagement;
 
 public class WaterAllotment {
+
+  public static final double AMOUNT_PER_LITRE_FOR_CORPORATE_RATIO = 1.0;
+  public static final double AMOUNT_PER_LITRE_FOR_BOREWELL_RATIO = 1.5;
+
   public double calculateStandardCost(int apartmentType, int corporationRatio, int borewellRatio) {
     if (apartmentType == 2) {
       return getStandardAmount(corporationRatio, borewellRatio, TwoBedRoom.WATER_ALLOTTED);
@@ -17,8 +21,8 @@ public class WaterAllotment {
     double corpFraction = (double) corporationRatio / denominator;
     double borewellFraction = (double) borewellRatio / denominator;
 
-    double amountForCorp = corpFraction * waterAlloted * 1.0;
-    double amountForBore = borewellFraction * waterAlloted * 1.5;
+    double amountForCorp = corpFraction * waterAlloted * AMOUNT_PER_LITRE_FOR_CORPORATE_RATIO;
+    double amountForBore = borewellFraction * waterAlloted * AMOUNT_PER_LITRE_FOR_BOREWELL_RATIO;
 
     return amountForCorp + amountForBore;
   }
