@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
-    String filePath = "sample_input/input4.txt";
+    String filePath = "sample_input/input2.txt";
 
     try {
       processWaterManagement(filePath);
