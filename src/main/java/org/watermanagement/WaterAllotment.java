@@ -3,9 +3,9 @@ package org.watermanagement;
 public class WaterAllotment {
   public double calculateStandardCost(int apartmentType, int corporationRatio, int borewellRatio) {
     if (apartmentType == 2) {
-      return getStandardAmount(corporationRatio, borewellRatio, 900);
+      return getStandardAmount(corporationRatio, borewellRatio, TwoBedRoom.WATER_ALLOTTED);
     } else if (apartmentType == 3) {
-      return getStandardAmount(corporationRatio, borewellRatio, 1500);
+      return getStandardAmount(corporationRatio, borewellRatio, ThreeBedRoom.WATER_ALLOTTED);
     } else {
       throw new IllegalArgumentException("There is something strange in the input");
     }
@@ -25,11 +25,12 @@ public class WaterAllotment {
 
   public double calculateTotalCost(int apartmentType, int corporationRatio, int borewellRatio,
       int numberOfGuests) {
+
     if (numberOfGuests == 0) {
       return calculateStandardCost(apartmentType, corporationRatio, borewellRatio);
     }
     double standardCost = calculateStandardCost(apartmentType, corporationRatio, borewellRatio);
-    double guestLitres = numberOfGuests * 10 * 30;
+    double guestLitres = numberOfGuests * BedRoom.LITRES_ALLOTED_PER_GUEST * BedRoom.NUMBER_OF_DAYS_IN_MONTH;
     double costForGuests = tankerWaterCost(guestLitres);
     return standardCost + costForGuests;
   }
@@ -51,10 +52,10 @@ public class WaterAllotment {
 
   public double getTotalWaterConsumed(int apartmentType, int numberOfGuests) {
     if (apartmentType == 2) {
-      return 900 + (numberOfGuests * 10 * 30);
-    } else if(apartmentType == 3) {
-      return 1500 + (numberOfGuests * 10 * 30);
-    }else{
+      return new TwoBedRoom().getWaterConsumed(numberOfGuests);
+    } else if (apartmentType == 3) {
+      return new ThreeBedRoom().getWaterConsumed(numberOfGuests);
+    } else {
       throw new IllegalArgumentException("There is something strange in the input");
     }
   }
