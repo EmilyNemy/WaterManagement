@@ -39,7 +39,7 @@ public class WaterAllotment {
     return standardCost + costForGuests;
   }
 
-  public double tankerWaterCost(double guestLitres) {
+  private double tankerWaterCost(double guestLitres) {
     if (guestLitres > 0 && guestLitres <= 500) {
       return guestLitres * 2;
     } else {
